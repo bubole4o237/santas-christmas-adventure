@@ -395,6 +395,8 @@ export default class GameEngine {
   hurt(fromX, kind) {
     const p = this.player;
     if (p.dead || p.invuln > 0 || p.victory || this.finished) return;
+    // след отключването порталът е безопасна зона – нищо не може да удари героя, докато влиза
+    if (this.portal && !this.portal.locked) return;
     if (p.shield) {
       p.shield = false;
       p.invuln = 1.4;
@@ -471,6 +473,8 @@ export default class GameEngine {
   /** Извиква се от React след правилен отговор на загадката. */
   unlockPortal() {
     this.portal.unlock();
+    // снежните топки, застинали във въздуха по време на загадката, се изчистват
+    for (const s of this.spawners) s.balls = [];
     this.sfx('portalUnlock');
     this.particles.burst(this.portal.center.x, this.portal.center.y, {
       colors: ['#ffd54a', '#ffffff', '#9fe3ff'],
