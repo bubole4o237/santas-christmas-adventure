@@ -47,7 +47,7 @@ export default function MainMenu({ hasRun, runInfo, aggregate, onNewGame, onCont
 
         {aggregate.completed > 0 && (
           <div className="menu-stats">
-            <span>🏆 {aggregate.completed}/5 нива</span>
+            <span>🏆 {aggregate.completed}/{LEVELS.length} нива</span>
             <span>⭐ {aggregate.stars}</span>
             <span>🎁 {aggregate.gifts}</span>
           </div>

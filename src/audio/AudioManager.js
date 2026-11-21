@@ -79,7 +79,7 @@ const SONGS = {
   },
 };
 
-export const LEVEL_SONGS = { menu: 'jingle', 1: 'jingle', 2: 'wish', 3: 'deck', 4: 'tree', 5: 'carol', victory: 'wish' };
+export const LEVEL_SONGS = { menu: 'jingle', 1: 'jingle', 2: 'wish', 3: 'deck', 4: 'tree', 5: 'carol', 6: 'deck', victory: 'wish' };
 
 class AudioManager {
   constructor() {

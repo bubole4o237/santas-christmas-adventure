@@ -400,6 +400,25 @@
   font-size: clamp(2.4rem, 8vw, 4rem);
   color: var(--gold);
   animation: titleGlow 2s ease-in-out infinite;
+  line-height: 1.05;
+}
+
+.vt-line {
+  display: block;
+}
+
+.vt-main {
+  white-space: nowrap;
+  font-size: clamp(1.6rem, 7vw, 2.7rem);
+}
+
+.vt-from {
+  font-size: clamp(1.2rem, 4vw, 1.7rem);
+  margin: 2px 0;
+}
+
+.vt-name {
+  font-size: clamp(2.4rem, 9vw, 4rem);
 }
 
 .victory-sub {

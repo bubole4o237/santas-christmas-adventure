@@ -1,5 +1,5 @@
 const KEY = 'santa-christmas-adventure-v1';
-export const TOTAL_LEVELS = 5;
+export const TOTAL_LEVELS = 6;
 export const START_LIVES = 3;
 
 export const defaultSettings = {
@@ -24,10 +24,14 @@ export function loadSave() {
     if (!raw) return defaultSave();
     const data = JSON.parse(raw);
     const base = defaultSave();
+    const levels = data.levels || {};
+    // Прогрес от по-стари версии: следващото ниво след последното завършено винаги е отключено.
+    const lastDone = Object.keys(levels).reduce((m, id) => (levels[id]?.completed ? Math.max(m, Number(id)) : m), 0);
     return {
       ...base,
       ...data,
-      levels: data.levels || {},
+      levels,
+      unlockedLevel: Math.min(TOTAL_LEVELS, Math.max(data.unlockedLevel || 1, lastDone + 1)),
       settings: { ...base.settings, ...(data.settings || {}) },
     };
   } catch {

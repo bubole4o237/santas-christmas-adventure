@@ -1,5 +1,5 @@
 /**
- * Дефиниции на петте нива. Всички координати са в пиксели (y расте надолу).
+ * Дефиниции на шестте нива. Всички координати са в пиксели (y расте надолу).
  * Нормалният скок достига ~150px височина и ~220px дължина при пълна скорост,
  * затова пропастите са до ~170px, а стъпалата – до ~120px.
  */
@@ -484,7 +484,7 @@ const level5 = {
     { x: 4430, y: 620 },
     { x: 5760, y: 620 },
   ],
-  portal: { x: 6240, y: 620, final: true },
+  portal: { x: 6240, y: 620 },
   items: [
     ...row('candy', 160, 585, 3),
     { type: 'star', x: 345, y: 482 },
@@ -532,6 +532,163 @@ const level5 = {
   ],
 };
 
-export const LEVELS = [level1, level2, level3, level4, level5];
+/* ------------------------------------------------------------------ */
+/*  НИВО 6 – Северният полюс (най-трудното)                             */
+/* ------------------------------------------------------------------ */
+const level6 = {
+  id: 6,
+  name: 'Северният полюс',
+  subtitle: 'Най-трудното изпитание',
+  description:
+    'Ледена буря, лавина, магически мост и две замръзнали врати. Всичко, което си научил, наведнъж – за истински смелите!',
+  theme: 'pole',
+  width: 7600,
+  height: 700,
+  spawn: { x: 90, y: 620 },
+  solids: [
+    ground(0, 760, 620, 'ice'),
+    ground(1180, 900, 620, 'castle'),
+    { x: 1560, y: 300, w: 380, h: 40, type: 'stone', noCap: true },
+    ground(2720, 380, 620, 'castle'),
+    { x: 3100, y: 320, w: 400, h: 500, type: 'castle' },
+    { x: 3650, y: 320, w: 280, h: 500, type: 'castle' },
+    { x: 4080, y: 320, w: 320, h: 500, type: 'castle' },
+    ground(4400, 1000, 620, 'castle'),
+    { x: 4620, y: 300, w: 520, h: 40, type: 'stone', noCap: true },
+    { x: 5440, y: 250, w: 640, h: 40, type: 'stone', noCap: true },
+    ground(6100, 1500, 620, 'castle'),
+  ],
+  platforms: [
+    { x: 1330, y: 530, w: 100, type: 'castle' },
+    { x: 1500, y: 440, w: 100, type: 'castle' },
+    { x: 6240, y: 530, w: 100, type: 'castle' },
+    { x: 6400, y: 440, w: 100, type: 'castle' },
+    { x: 6560, y: 350, w: 100, type: 'castle' },
+  ],
+  doors: [
+    { x: 1990, y: 430, w: 50, h: 190 },
+    { x: 6900, y: 430, w: 50, h: 190 },
+  ],
+  water: [
+    { x: 760, y: 640, w: 420 },
+    { x: 5400, y: 640, w: 700 },
+  ],
+  crackingIce: [
+    { x: 790, y: 600, w: 100, crackTime: 0.6 },
+    { x: 1070, y: 590, w: 90, crackTime: 0.6 },
+  ],
+  moving: [{ x: 920, y: 580, w: 110, dy: -80, period: 2.6, type: 'ice' }],
+  magicPlatforms: magicSeq(
+    [
+      [2130, 580, 90],
+      [2280, 540, 90],
+      [2430, 580, 90],
+      [2580, 545, 90],
+    ],
+    3.6,
+    1.0,
+    0.6,
+  ),
+  climbWalls: [{ x: 3050, y: 320, w: 50, h: 300, dir: 1 }],
+  avalanches: [{ triggerX: 3200, startX: 2800, endX: 4420, speed: 225, top: 100 }],
+  icicles: [
+    { x: 1640, y: 340 },
+    { x: 1740, y: 340 },
+    { x: 1840, y: 340 },
+    { x: 4700, y: 340 },
+    { x: 4830, y: 340 },
+    { x: 4960, y: 340 },
+    { x: 5090, y: 340 },
+  ],
+  swingIcicles: [
+    { x: 5540, y: 290, len: 268, amp: 0.8, speed: 2, phase: 0 },
+    { x: 5770, y: 290, len: 268, amp: 0.8, speed: 2, phase: 1.7 },
+    { x: 6000, y: 290, len: 268, amp: 0.8, speed: 2, phase: 3.4 },
+  ],
+  snowballs: [
+    { x: 740, y: 620, dir: -1, speed: 250, interval: 2.6, r: 18 },
+    { x: 5380, y: 620, dir: -1, speed: 270, interval: 2.4, r: 20 },
+    { x: 7520, y: 620, dir: -1, speed: 300, interval: 2.2, r: 20 },
+  ],
+  spikes: [
+    { x: 430, y: 620, w: 60 },
+    { x: 1700, y: 620, w: 60 },
+    { x: 3270, y: 320, w: 50 },
+    { x: 3730, y: 320, w: 50 },
+    { x: 4200, y: 320, w: 50 },
+    { x: 4560, y: 620, w: 60 },
+    { x: 4890, y: 620, w: 60 },
+    { x: 5120, y: 620, w: 60 },
+    { x: 6700, y: 620, w: 60 },
+    { x: 7060, y: 620, w: 120 },
+  ],
+  bridges: [{ x: 5400, y: 620, w: 700, switchX: 5340, switchY: 620 }],
+  checkpoints: [
+    { x: 1230, y: 620 },
+    { x: 2740, y: 620 },
+    { x: 3140, y: 320 },
+    { x: 4450, y: 620 },
+    { x: 5200, y: 620 },
+    { x: 6130, y: 620 },
+  ],
+  portal: { x: 7280, y: 620, final: true },
+  items: [
+    ...row('candy', 180, 585, 3),
+    { type: 'star', x: 590, y: 585 },
+    { type: 'gift', x: 950, y: 470 },
+    { type: 'star', x: 1115, y: 540 },
+    { type: 'shield', x: 1260, y: 585 },
+    { type: 'star', x: 1380, y: 490 },
+    { type: 'key', x: 1550, y: 400 },
+    ...row('candy', 1620, 585, 3, 90),
+    { type: 'star', x: 1950, y: 585 },
+    { type: 'gift', x: 2060, y: 520, hidden: true },
+    { type: 'goldGift', x: 2325, y: 500 },
+    { type: 'star', x: 2475, y: 540 },
+    { type: 'snowflake', x: 2625, y: 505 },
+    { type: 'superjump', x: 2760, y: 585 },
+    { type: 'star', x: 3070, y: 450 },
+    { type: 'speed', x: 3170, y: 285 },
+    { type: 'star', x: 3325, y: 240 },
+    { type: 'gift', x: 3575, y: 250 },
+    { type: 'star', x: 3860, y: 250 },
+    { type: 'goldGift', x: 4150, y: 285 },
+    { type: 'gift', x: 4520, y: 585 },
+    { type: 'gift', x: 4770, y: 585 },
+    { type: 'star', x: 5025, y: 585 },
+    { type: 'shield', x: 5260, y: 585 },
+    ...row('candy', 5480, 585, 6, 90),
+    { type: 'star', x: 5830, y: 585 },
+    { type: 'goldGift', x: 6000, y: 585 },
+    { type: 'key', x: 6610, y: 310 },
+    { type: 'life', x: 6450, y: 400 },
+    { type: 'star', x: 6700, y: 400, hidden: true },
+    { type: 'gift', x: 6810, y: 585 },
+    { type: 'star', x: 7000, y: 585 },
+    { type: 'goldGift', x: 7120, y: 440 },
+    { type: 'snowflake', x: 7230, y: 520 },
+  ],
+  decor: [
+    { type: 'sign', x: 70, y: 620, s: 0.9, text: 'Полюсът' },
+    { type: 'torch', x: 300, y: 620 },
+    { type: 'crystal', x: 640, y: 620, s: 0.8 },
+    { type: 'torch', x: 1220, y: 620 },
+    { type: 'banner', x: 1450, y: 620 },
+    { type: 'torch', x: 2040, y: 620 },
+    { type: 'sign', x: 2740, y: 620, s: 0.9, text: 'Катери се ↑' },
+    { type: 'torch', x: 3130, y: 320 },
+    { type: 'crystal', x: 3400, y: 320, s: 0.6 },
+    { type: 'banner', x: 4260, y: 320 },
+    { type: 'torch', x: 4440, y: 620 },
+    { type: 'crystal', x: 5000, y: 620, s: 0.9 },
+    { type: 'sign', x: 5220, y: 620, s: 0.9, text: 'Магическа руна →' },
+    { type: 'torch', x: 6120, y: 620 },
+    { type: 'banner', x: 6480, y: 620 },
+    { type: 'torch', x: 6860, y: 620 },
+    { type: 'crystal', x: 7440, y: 620, s: 1.3 },
+  ],
+};
 
-export const LEVEL_ICONS = ['🏘️', '🧊', '🏔️', '🌲', '🏰'];
+export const LEVELS = [level1, level2, level3, level4, level5, level6];
+
+export const LEVEL_ICONS = ['🏘️', '🧊', '🏔️', '🌲', '🏰', '❄️'];

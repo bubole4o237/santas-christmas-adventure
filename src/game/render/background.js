@@ -46,6 +46,14 @@ export const THEMES = {
     layers: ['mountainsFar', 'castle', 'spires'],
     layerColors: [['#4a5f9a', '#2f3f73'], ['#6aa6d8', '#2e5c96'], ['#1f3c66', '#0e2040']],
   },
+  pole: {
+    sky: ['#02081c', '#0a2a4e', '#17806f'],
+    aurora: ['rgba(80,255,190,', 'rgba(190,110,255,'],
+    moon: false,
+    snow: 1.7,
+    layers: ['giants', 'icePeaks', 'spires'],
+    layerColors: [['#7fb4e0', '#4d7fb8'], ['#3b6ea6', '#1f4272'], ['#12284a', '#07122a']],
+  },
 };
 
 const FACTORS = [0.12, 0.28, 0.5];
